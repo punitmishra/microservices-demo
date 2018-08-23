@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS PUBLIC!
+
 # Hipster Shop: Cloud-Native Microservices Demo Application
 
 This project contains a 10-tier microservices application. The application is a
