@@ -66,32 +66,32 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
                                     ["gcr.io/callidus-open-source/microservice-demo/adservice:latest",
                                      "gcr.io/callidus-open-source/microservice-demo/adservice:${scmVars.GIT_COMMIT}"],
                                     44551)
-                },
-                "build cartservice": {
-                    buildOnKanikoNc(workspace+"/src/cartservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/cartservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/cartservice:${scmVars.GIT_COMMIT}"],
-                                    44552)
-                },
-                "build checkoutservice": {
-                    buildOnKanikoNc(workspace+"/src/checkoutservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/checkoutservice:${scmVars.GIT_COMMIT}"],
-                                    44553,
-                                    "--target=release")
-                },
-                "build currencyservice": {
-                    buildOnKanikoNc(workspace+"/src/currencyservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/currencyservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/currencyservice:${scmVars.GIT_COMMIT}"],
-                                    44554)
-                },
-                "build emailservice": {
-                    buildOnKanikoNc(workspace+"/src/emailservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/emailservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/emailservice:${scmVars.GIT_COMMIT}"],
-                                    44555)
                 }
+                // "build cartservice": {
+                //     buildOnKanikoNc(workspace+"/src/cartservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/cartservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/cartservice:${scmVars.GIT_COMMIT}"],
+                //                     44552)
+                // },
+                // "build checkoutservice": {
+                //     buildOnKanikoNc(workspace+"/src/checkoutservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/checkoutservice:${scmVars.GIT_COMMIT}"],
+                //                     44553,
+                //                     "--target=release")
+                // },
+                // "build currencyservice": {
+                //     buildOnKanikoNc(workspace+"/src/currencyservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/currencyservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/currencyservice:${scmVars.GIT_COMMIT}"],
+                //                     44554)
+                // },
+                // "build emailservice": {
+                //     buildOnKanikoNc(workspace+"/src/emailservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/emailservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/emailservice:${scmVars.GIT_COMMIT}"],
+                //                     44555)
+                // }
             )
         }
 
@@ -106,31 +106,31 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
                                     ["gcr.io/callidus-open-source/microservice-demo/frontend:latest",
                                      "gcr.io/callidus-open-source/microservice-demo/frontend:${scmVars.GIT_COMMIT}"],
                                     44551)
-                },
-                "build paymentservice": {
-                    buildOnKanikoNc(workspace+"/src/paymentservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/paymentservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/paymentservice:${scmVars.GIT_COMMIT}"],
-                                    44552)
-                },
-                "build productcatalogservice": {
-                    buildOnKanikoNc(workspace+"/src/productcatalogservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/productcatalogservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/productcatalogservice:${scmVars.GIT_COMMIT}"],
-                                    44553)
-                },
-                "build recommendationservice": {
-                    buildOnKanikoNc(workspace+"/src/recommendationservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/recommendationservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/recommendationservice:${scmVars.GIT_COMMIT}"],
-                                    44554)
-                },
-                "build shippingservice": {
-                    buildOnKanikoNc(workspace+"/src/shippingservice", "Dockerfile",
-                                    ["gcr.io/callidus-open-source/microservice-demo/shippingservice:latest",
-                                     "gcr.io/callidus-open-source/microservice-demo/shippingservice:${scmVars.GIT_COMMIT}"],
-                                    44555)
                 }
+                // "build paymentservice": {
+                //     buildOnKanikoNc(workspace+"/src/paymentservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/paymentservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/paymentservice:${scmVars.GIT_COMMIT}"],
+                //                     44552)
+                // },
+                // "build productcatalogservice": {
+                //     buildOnKanikoNc(workspace+"/src/productcatalogservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/productcatalogservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/productcatalogservice:${scmVars.GIT_COMMIT}"],
+                //                     44553)
+                // },
+                // "build recommendationservice": {
+                //     buildOnKanikoNc(workspace+"/src/recommendationservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/recommendationservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/recommendationservice:${scmVars.GIT_COMMIT}"],
+                //                     44554)
+                // },
+                // "build shippingservice": {
+                //     buildOnKanikoNc(workspace+"/src/shippingservice", "Dockerfile",
+                //                     ["gcr.io/callidus-open-source/microservice-demo/shippingservice:latest",
+                //                      "gcr.io/callidus-open-source/microservice-demo/shippingservice:${scmVars.GIT_COMMIT}"],
+                //                     44555)
+                // }
             )
         }
 
