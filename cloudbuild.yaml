@@ -1,0 +1,51 @@
+steps:
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/adservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/adservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/cartservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/cartservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/checkoutservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
+           "--target=release"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+          "--context=dir:///workspace/src/currencyservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/currencyservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/emailservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/emailservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/frontend",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/frontend:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/paymentservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/paymentservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/productcatalogservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/productcatalogservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/recommendationservice",
+            "--destination=gcr.io/callidus-open-source/microservice-demo/recommendationservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/shippingservice",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/shippingservice:latest"]
+  - name: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/loadgenerator",
+           "--destination=gcr.io/callidus-open-source/microservice-demo/loadgenerator:latest"]
+
+timeout: 4000s   
+options:
+  diskSizeGb: 300
+  machineType: "N1_HIGHCPU_32"
