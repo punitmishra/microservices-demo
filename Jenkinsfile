@@ -52,7 +52,7 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
 {
 
 
-    node('kaniko-build') {
+    node('microservice-demo-build') {
         stage("Checkout") {
             scmVars = checkout scm
             def workspace = pwd()
