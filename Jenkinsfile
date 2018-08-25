@@ -77,7 +77,8 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
                     buildOnKanikoNc(workspace+"/src/checkoutservice", "Dockerfile",
                                     ["gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
                                      "gcr.io/callidus-open-source/microservice-demo/checkoutservice:${scmVars.GIT_COMMIT}"],
-                                    44553)
+                                    44553,
+                                    "--target=release")
                 },
                 "build currencyservice": {
                     buildOnKanikoNc(workspace+"/src/currencyservice", "Dockerfile",
@@ -141,14 +142,11 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
 
 
 
-def buildOnKanikoNc(context, dockerfile, destinationArray, ncport) {
+def buildOnKanikoNc(context, dockerfile, destinationArray, ncport, optArgs="") {
     def destinations = ""
     destinationArray.each {dest ->
-        echo "${dest}"
         destinations += "--destination=${dest} "
-    }
+r   }
 
-
-    echo "exit \$(echo \"--dockerfile=${dockerfile} --context=${context} ${destinations}\" | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP \"^KANIKO_NC_RETURN=\\K\\d*\$\")"
-    sh "exit \$(echo \"--dockerfile=${dockerfile} --context=${context} ${destinations}\" | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP \"^KANIKO_NC_RETURN=\\K\\d*\$\")"
+    sh "exit \$(echo \"--dockerfile=${dockerfile} --context=${context} ${destinations} ${optArgs}\" | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP \"^KANIKO_NC_RETURN=\\K\\d*\$\")"
 }
