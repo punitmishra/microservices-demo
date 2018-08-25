@@ -45,7 +45,7 @@ steps:
            "--context=dir:///workspace/src/loadgenerator",
            "--destination=gcr.io/callidus-open-source/microservice-demo/loadgenerator:latest"]
 
-timeout: 2000s           
+timeout: 4000s   
 options:
   diskSizeGb: 300
   machineType: "N1_HIGHCPU_32"
