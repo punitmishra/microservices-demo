@@ -140,6 +140,10 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
                              "gcr.io/callidus-open-source/microservice-demo/loadgenerator:${scmVars.GIT_COMMIT}"],
                             44551)
         }
+
+        stage("debug wait -_-") {
+            sleep 200
+        }
     }
 
 }
