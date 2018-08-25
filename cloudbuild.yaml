@@ -44,3 +44,7 @@ steps:
     args: ["--dockerfile=Dockerfile",
            "--context=dir:///workspace/src/loadgenerator",
            "--destination=gcr.io/callidus-open-source/microservice-demo/loadgenerator:latest"]
+
+options:
+  diskSizeGb: 300
+  machineType: "N1_HIGHCPU_32"
