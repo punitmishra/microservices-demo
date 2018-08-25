@@ -4,15 +4,6 @@ properties([[$class: 'BuildDiscarderProperty',
              strategy: [$class: 'LogRotator', numToKeepStr: '10']]
 ])
 
-def buildOnKanikoNc(context, dockerfile, destination, ncport) {
-    def destinations = ""
-    destinations.each {dest ->
-        destinations += "--destination=" + $dest + " "
-    }
-
-    echo 'exit $(echo "--dockerfile=${dockerfile} --context=${context} ${destinations} | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP "^KANIKO_NC_RETURN=\\K\\d*\$")'
-    sh 'exit $(echo "--dockerfile=${dockerfile} --context=${context} ${destinations} | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP "^KANIKO_NC_RETURN=\\K\\d*\$")'
-}
 
 podTemplate(label: 'microservice-demo-build', namespace: 'devops',
             nodeUsageMode: 'EXCLUSIVE',
@@ -60,7 +51,19 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
     ])
 {
 
+
     node('kaniko-build') {
+
+        def buildOnKanikoNc(context, dockerfile, destination, ncport) {
+            def destinations = ""
+            destinations.each {dest ->
+                destinations += "--destination=" + $dest + " "
+            }
+
+            echo 'exit $(echo "--dockerfile=${dockerfile} --context=${context} ${destinations} | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP "^KANIKO_NC_RETURN=\\K\\d*\$")'
+            sh 'exit $(echo "--dockerfile=${dockerfile} --context=${context} ${destinations} | nc 127.0.0.1 ${ncport} | tee /dev/fd/2 | grep -xoP "^KANIKO_NC_RETURN=\\K\\d*\$")'
+        }
+
         stage("Checkout") {
             scmVars = checkout scm
             def workspace = pwd()
