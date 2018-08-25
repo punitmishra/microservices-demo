@@ -95,6 +95,10 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
             )
         }
 
+        stage("Wait for Kaniko workers to reset connection") {
+            sleep 10
+        }
+        
         stage("Build subprojects 2/2") {
             parallel(
                 "build frontend": {
