@@ -14,33 +14,33 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
                           ttyEnabled: true),
         containerTemplate(name: 'kaniko-nc-1',
                           image: 'gcr.io/callidus-open-source/devops/kaniko-nc:debug',
+                          args: '44551',
                           alwaysPullImage: true,
                           ttyEnabled: true,
-                          ports: [portMapping(name: 'nc', containerPort: 44556, hostPort: 44551)]
         ),
         containerTemplate(name: 'kaniko-nc-2',
                           image: 'gcr.io/callidus-open-source/devops/kaniko-nc:debug',
                           alwaysPullImage: true,
+                          args: '44552',
                           ttyEnabled: true,
-                          ports: [portMapping(name: 'nc', containerPort: 44556, hostPort: 44552)]
         ),
         containerTemplate(name: 'kaniko-nc-3',
                           image: 'gcr.io/callidus-open-source/devops/kaniko-nc:debug',
                           alwaysPullImage: true,
+                          args: '44553',
                           ttyEnabled: true,
-                          ports: [portMapping(name: 'nc', containerPort: 44556, hostPort: 44553)]
         ),
         containerTemplate(name: 'kaniko-nc-4',
                           image: 'gcr.io/callidus-open-source/devops/kaniko-nc:debug',
                           alwaysPullImage: true,
+                          args: '44554',
                           ttyEnabled: true,
-                          ports: [portMapping(name: 'nc', containerPort: 44556, hostPort: 44554)]
         ),
         containerTemplate(name: 'kaniko-nc-5',
                           image: 'gcr.io/callidus-open-source/devops/kaniko-nc:debug',
                           alwaysPullImage: true,
+                          args: '44555',
                           ttyEnabled: true,
-                          ports: [portMapping(name: 'nc', containerPort: 44556, hostPort: 44555)]
         )
     ],
             volumes: [
