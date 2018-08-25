@@ -1,5 +1,4 @@
 def scmVars
-def workspace = pwd()
 
 properties([[$class: 'BuildDiscarderProperty',
              strategy: [$class: 'LogRotator', numToKeepStr: '10']]
@@ -64,6 +63,7 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
     node('kaniko-build') {
         stage("Checkout") {
             scmVars = checkout scm
+            def workspace = pwd()
             echo 'Workspace: ${workspace}'
         }
 
