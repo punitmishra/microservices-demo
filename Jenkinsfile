@@ -142,7 +142,7 @@ podTemplate(label: 'microservice-demo-build', namespace: 'devops',
 
 
 
-def buildOnKanikoNc(context, dockerfile, destinationArray, ncport, optArgs="") {
+def buildOnKanikoNc(context, dockerfile, destinationArray, ncport, optArgs = null) {
     def destinations = ""
     destinationArray.each {dest ->
         destinations += "--destination=${dest} "
