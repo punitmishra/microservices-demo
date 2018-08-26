@@ -16,6 +16,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: loadgenerator
+  namespace: microservices-demo
 spec:
   replicas: 1
   template:
@@ -51,3 +52,5 @@ spec:
           limits:
             cpu: 500m
             memory: 512Mi
+      imagePullSecrets:
+      - name: calliduscloud-open-source-imagepullsecret

@@ -16,6 +16,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: recommendationservice
+  namespace: microservices-demo
 spec:
   template:
     metadata:
@@ -46,11 +47,14 @@ spec:
           limits:
             cpu: 200m
             memory: 450Mi
+      imagePullSecrets:
+      - name: calliduscloud-open-source-imagepullsecret
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: recommendationservice
+  namespace: microservices-demo
 spec:
   type: ClusterIP
   selector:

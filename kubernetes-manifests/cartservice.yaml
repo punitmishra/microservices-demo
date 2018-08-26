@@ -16,6 +16,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: cartservice
+  namespace: microservices-demo
 spec:
   template:
     metadata:
@@ -51,11 +52,14 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/cartservice_probe"]
+      imagePullSecrets:
+      - name: calliduscloud-open-source-imagepullsecret
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: cartservice
+  namespace: microservices-demo
 spec:
   type: ClusterIP
   selector:

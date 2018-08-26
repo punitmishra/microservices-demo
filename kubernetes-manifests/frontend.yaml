@@ -16,6 +16,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: microservices-demo
 spec:
   template:
     metadata:
@@ -65,11 +66,14 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+      imagePullSecrets:
+      - name: calliduscloud-open-source-imagepullsecret
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: microservices-demo
 spec:
   type: ClusterIP
   selector:
@@ -83,6 +87,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-external
+  namespace: microservices-demo
 spec:
   type: LoadBalancer
   selector:
