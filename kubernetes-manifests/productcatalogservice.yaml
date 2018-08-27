@@ -29,6 +29,13 @@ spec:
         image: gcr.io/callidus-open-source/microservice-demo/productcatalogservice
         ports:
         - containerPort: 3550
+        volumeMounts:
+        - name: service-account-gcp-credentials
+          mountPath: /etc/secrets
+          readOnly: true
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /etc/secrets/sa_credentials.json
         readinessProbe:
           periodSeconds: 5
           tcpSocket:
@@ -46,6 +53,10 @@ spec:
             memory: 128Mi
       imagePullSecrets:
       - name: calliduscloud-open-source-imagepullsecret
+      volumes:
+      - name: service-account-gcp-credentials
+        secret:
+          secretName: microservices-demo-service-account-credentials
 ---
 apiVersion: v1
 kind: Service

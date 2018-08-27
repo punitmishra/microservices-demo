@@ -29,9 +29,15 @@ spec:
         image: gcr.io/callidus-open-source/microservice-demo/adservice
         ports:
         - containerPort: 9555
+        volumeMounts:
+        - name: service-account-gcp-credentials
+          mountPath: /etc/secrets
+          readOnly: true
         env:
         - name: PORT
           value: "9555"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /etc/secrets/sa_credentials.json
         resources:
           requests:
             cpu: 200m
@@ -51,6 +57,10 @@ spec:
           periodSeconds: 10
       imagePullSecrets:
       - name: calliduscloud-open-source-imagepullsecret
+      volumes:
+      - name: service-account-gcp-credentials
+        secret:
+          secretName: microservices-demo-service-account-credentials
 ---
 apiVersion: v1
 kind: Service

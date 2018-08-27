@@ -29,6 +29,11 @@ spec:
         image: gcr.io/callidus-open-source/microservice-demo/cartservice
         ports:
         - containerPort: 7070
+        volumeMounts:
+        - name: service-account-gcp-credentials
+          mountPath: /etc/secrets
+          readOnly: true
+        args: [ "" ]
         env:
         - name: REDIS_ADDR
           value: "redis-cart:6379"
@@ -36,6 +41,8 @@ spec:
           value: "7070"
         - name: LISTEN_ADDR
           value: "0.0.0.0"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /etc/secrets/sa_credentials.json
         resources:
           requests:
             cpu: 200m
@@ -54,6 +61,10 @@ spec:
             command: ["/cartservice_probe"]
       imagePullSecrets:
       - name: calliduscloud-open-source-imagepullsecret
+      volumes:
+      - name: service-account-gcp-credentials
+        secret:
+          secretName: microservices-demo-service-account-credentials
 ---
 apiVersion: v1
 kind: Service

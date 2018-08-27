@@ -30,8 +30,8 @@ spec:
       - name: wait-frontend
         image: alpine:3.6
         command: ['sh', '-c', 'set -x;  apk add --no-cache curl; 
-          until timeout -t 2 curl -f "http://${FRONTEND_ADDR}"; do 
-            echo "waiting for http://${FRONTEND_ADDR}"; 
+          until timeout -t 2 curl -f "http://$FRONTEND_ADDR"; do 
+            echo "waiting for http://$FRONTEND_ADDR"; 
             sleep 2;
           done;']
         env:
@@ -40,11 +40,17 @@ spec:
       containers:
       - name: main
         image: gcr.io/callidus-open-source/microservice-demo/loadgenerator
+        volumeMounts:
+        - name: service-account-gcp-credentials
+          mountPath: /etc/secrets
+          readOnly: true
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
         - name: USERS
           value: "10"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /etc/secrets/sa_credentials.json
         resources:
           requests:
             cpu: 300m
@@ -54,3 +60,7 @@ spec:
             memory: 512Mi
       imagePullSecrets:
       - name: calliduscloud-open-source-imagepullsecret
+      volumes:
+      - name: service-account-gcp-credentials
+        secret:
+          secretName: microservices-demo-service-account-credentials

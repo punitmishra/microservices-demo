@@ -29,6 +29,10 @@ spec:
         image: gcr.io/callidus-open-source/microservice-demo/recommendationservice
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: service-account-gcp-credentials
+          mountPath: /etc/secrets
+          readOnly: true
         readinessProbe:
           periodSeconds: 5
           tcpSocket:
@@ -40,6 +44,8 @@ spec:
         env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: "productcatalogservice:3550"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /etc/secrets/sa_credentials.json
         resources:
           requests:
             cpu: 100m
@@ -49,6 +55,10 @@ spec:
             memory: 450Mi
       imagePullSecrets:
       - name: calliduscloud-open-source-imagepullsecret
+      volumes:
+      - name: service-account-gcp-credentials
+        secret:
+          secretName: microservices-demo-service-account-credentials
 ---
 apiVersion: v1
 kind: Service
