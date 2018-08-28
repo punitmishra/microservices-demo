@@ -3,35 +3,35 @@ steps:
     dir:  'src/adservice'
     args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/adservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/cartservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/cartservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/cartservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/cartservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/checkoutservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/checkoutservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/checkoutservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/checkoutservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/currencyservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/currencyservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/currencyservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/currencyservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/emailservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/emailservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/emailservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/emailservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/frontend'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/frontend:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/frontend'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/frontend:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/loadgenerator'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/loadgenerator:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/loadgenerator'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/loadgenerator:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/paymentservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/paymentservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/paymentservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/paymentservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/productcatalogservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/productcatalogservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/productcatalogservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/productcatalogservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/recommendationservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/recommendationservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/recommendationservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/recommendationservice:release-$COMMIT_SHA-$BUILD_ID', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'scr/shippingservice'
-    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/shippingservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+    dir:  'src/shippingservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/shippingservice:release-$COMMIT_SHA-$BUILD_ID', '.']
 
 timeout: 4000s   
 options:
