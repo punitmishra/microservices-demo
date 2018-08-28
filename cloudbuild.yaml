@@ -10,8 +10,8 @@ steps:
   - name: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
            "--destination=gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
-    dir: "/src/checkoutservice"
            "--target=release"]
+    dir: "/src/checkoutservice"
   - name: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
            "--destination=gcr.io/callidus-open-source/microservice-demo/currencyservice:latest"]
