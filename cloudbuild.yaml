@@ -5,7 +5,7 @@ steps:
            "--destination=gcr.io/callidus-open-source/microservice-demo/adservice:latest"]
   - name: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
-           "--context=/workspace/src/cartservice",
+           "--context=dir:///workspace/src/cartservice",
            "--destination=gcr.io/callidus-open-source/microservice-demo/cartservice:latest"]
   - name: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
@@ -47,5 +47,5 @@ steps:
 
 timeout: 4000s   
 options:
-  diskSizeGb: 300
+  diskSizeGb: 500
   machineType: "N1_HIGHCPU_32"
