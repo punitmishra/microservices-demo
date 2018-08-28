@@ -15,6 +15,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
+  namespace: microservices-demo
   name: currency-provider-external
 spec:
   hosts:
