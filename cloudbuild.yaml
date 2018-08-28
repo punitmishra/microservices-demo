@@ -1,6 +1,7 @@
 steps:
   - name: gcr.io/kaniko-project/executor:latest
     args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace/src/adservice",
            "--destination=gcr.io/callidus-open-source/microservice-demo/adservice:latest"]
     dir: "src/adservice"
   - name: gcr.io/kaniko-project/executor:latest
