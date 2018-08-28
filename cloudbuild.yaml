@@ -1,49 +1,37 @@
 steps:
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/adservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/adservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/cartservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/cartservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/checkoutservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/checkoutservice:latest",
-           "--target=release"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-          "--context=dir:///workspace/src/currencyservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/currencyservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/emailservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/emailservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/frontend",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/frontend:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/paymentservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/paymentservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/productcatalogservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/productcatalogservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/recommendationservice",
-            "--destination=gcr.io/callidus-open-source/microservice-demo/recommendationservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/shippingservice",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/shippingservice:latest"]
-  - name: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
-           "--context=dir:///workspace/src/loadgenerator",
-           "--destination=gcr.io/callidus-open-source/microservice-demo/loadgenerator:latest"]
+  - name: 'gcr.io/cloud-builders/docker'
+    dir:  'src/adservice'
+    args: ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/adservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/cartservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/cartservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/checkoutservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/checkoutservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/currencyservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/currencyservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/emailservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/emailservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/frontend'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/frontend:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/loadgenerator'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/loadgenerator:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/paymentservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/paymentservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/productcatalogservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/productcatalogservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/recommendationservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/recommendationservice:release-$COMMIT_SHA-$BUILD_ID', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'scr/shippingservice'
+    args:  ['build', '-t', 'gcr.io/callidus-open-source/microservice-demo/shippingservice:release-$COMMIT_SHA-$BUILD_ID', '.']
 
 timeout: 4000s   
 options:
