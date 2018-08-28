@@ -43,8 +43,7 @@ images: ['gcr.io/callidus-open-source/microservice-demo/adservice:release-$COMMI
          'gcr.io/callidus-open-source/microservice-demo/paymentservice:release-$COMMIT_SHA-$BUILD_ID',
          'gcr.io/callidus-open-source/microservice-demo/productcatalogservice:release-$COMMIT_SHA-$BUILD_ID',
          'gcr.io/callidus-open-source/microservice-demo/recommendationservice:release-$COMMIT_SHA-$BUILD_ID',
-         'gcr.io/callidus-open-source/microservice-demo/shippingservice:release-$COMMIT_SHA-$BUILD_ID',
-         'gcr.io/callidus-open-source/microservice-demo/:release-$COMMIT_SHA-$BUILD_ID']
+         'gcr.io/callidus-open-source/microservice-demo/shippingservice:release-$COMMIT_SHA-$BUILD_ID']
 
 timeout: 4000s   
 options:
