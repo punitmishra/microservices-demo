@@ -31,6 +31,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
+  namespace: microservices-demo
   name: frontend-ingress
 spec:
   hosts:
